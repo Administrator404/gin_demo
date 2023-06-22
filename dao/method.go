@@ -17,9 +17,20 @@ func InvoiceQuerys(page int, size int) (invs []models.Invoice) {
 	return
 }
 
-//// 根据发票号码获得发票的详情信息
-//func InvoiceDetailsQueryNumber(number int) (invDetails []InvoiceDetails) {
-//	dao.Db.Debug().Find(&invDetails, number)
-//	fmt.Println(invDetails)
-//	return invDetails
-//}
+// 根据发票号码查询发票信息
+func InvoiceQuerysNumber(invNumber string) (inv models.Invoice) {
+	config.Db.Debug().Where("number = ?", invNumber).Find(&inv)
+	return
+}
+
+// 根据发票ID查询商品信息
+func ProductQuerysByInvID(invId int64) (product models.ProductInformation) {
+	config.Db.Debug().Where("id = ?", invId).First(&product)
+	return
+}
+
+// 根据收货人号码查询收货人信息
+func ConsigneeQuerysByPhone(consigneePhone string) (consignee models.Consignee) {
+	config.Db.Debug().Where("phone = ?", consigneePhone).First(&consignee)
+	return
+}

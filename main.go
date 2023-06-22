@@ -12,7 +12,10 @@ func main() {
 	// 启动gin引擎
 	r := gin.Default()
 	// 路由
+	// 根据page和size拿到发票信息
 	r.GET("/test", service.GetInvs)
+	// 根据发票号码拿到发票信息、收货人信息、商品信息
+	r.GET("/test1/:invNumber", service.GetInvsALL)
 	// 运行服务端
 	r.Run("127.0.0.1:8080")
 }
