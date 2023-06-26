@@ -46,3 +46,20 @@ func GetInvsALL(c *gin.Context) {
 		"consignee": consignee,
 	})
 }
+
+// 插入发票
+func PutInvs(c *gin.Context) {
+	// 获取要插入的发票数
+	numsString := c.Query("nums")
+	// 转成int类型
+	numsInt, err := strconv.Atoi(numsString)
+	if err != nil {
+		println("插入发票数异常：", err)
+	}
+	// 根据nums值生成对应个数的发票数据
+	invs := dao.CreateInvs(numsInt)
+	// 将生成的发票数据插入数据库中
+	dao.PutInvs(invs)
+	// 返回成功状态码
+	c.Status(http.StatusOK)
+}

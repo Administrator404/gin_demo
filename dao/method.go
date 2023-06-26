@@ -34,3 +34,21 @@ func ConsigneeQuerysByPhone(consigneePhone string) (consignee models.Consignee) 
 	config.Db.Debug().Where("phone = ?", consigneePhone).First(&consignee)
 	return
 }
+
+// 根据Invoices切片插入对应发票数据信息
+func PutInvs(invs []models.Invoice) {
+	config.Db.Debug().Create(invs)
+	return
+}
+
+// 根据nums值生成对应个数的发票数据
+func CreateInvs(nums int) (invs []models.Invoice) {
+	invs = make([]models.Invoice, nums, nums)
+	for i := 0; i < nums; i++ {
+		invs[i].Number = "13"
+		invs[i].InvoiceType = 1
+		invs[i].Status = 1
+		invs[i].ConsigneePhone = "13016179796"
+	}
+	return
+}

@@ -4,7 +4,7 @@ package models
 type Invoice struct {
 	Id             int64  `json:"id"`
 	Number         string `json:"number"`
-	InvoiceType    uint8  `json:"type"`
+	InvoiceType    uint8  `json:"type" gorm:"column:type"`
 	Status         uint8  `json:"status"`
 	ConsigneePhone string `json:"consignee_phone"`
 }

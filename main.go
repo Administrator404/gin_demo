@@ -16,6 +16,8 @@ func main() {
 	r.GET("/test", service.GetInvs)
 	// 根据发票号码拿到发票信息、收货人信息、商品信息
 	r.GET("/test1/:invNumber", service.GetInvsALL)
+	// 插入记录,
+	r.PUT("/put1", service.PutInvs)
 	// 运行服务端
 	r.Run("127.0.0.1:8080")
 }
