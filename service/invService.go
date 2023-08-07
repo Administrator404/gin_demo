@@ -15,6 +15,7 @@ func GetInvs(c *gin.Context) {
 	// 将size和page转为int类型
 	size, err01 := strconv.Atoi(sizeS)
 	if err01 != nil {
+
 		fmt.Println("size输入有误：", err01)
 	}
 	page, err02 := strconv.Atoi(pageS)
