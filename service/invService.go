@@ -16,7 +16,7 @@ func GetInvs(c *gin.Context) {
 	size, err01 := strconv.Atoi(sizeS)
 	if err01 != nil {
 
-		fmt.Println("size输入有误：", err01)
+		fmt.Println("size输入有误：11111", err01)
 	}
 	page, err02 := strconv.Atoi(pageS)
 	if err02 != nil {
